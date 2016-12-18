@@ -1,0 +1,21 @@
+<texts>
+	<text>
+		<id>1</id>
+		<category></category>
+		<title>Ein Friedensangebot</title>
+		<content><![CDATA[@n grüßt euch freundlich: "Hochgeschätzter @p, ich grüße Euch in meinem und dem Namen meiner Familie. <br />Ist es nicht der harte Konkurrenzkampf, der so viele Handelshäuser bettelarm macht und ihre Oberhäupter in den Schuldturm bringt?!<br />Drum laßt uns diesen Zwist beilegen und uns die Hände reichen. Mögen unsere Familien in den kommenden Jahren friedlich in @c zusammenleben."]]></content>
+	</text>
+	<text>
+		<id>2</id>
+		<category></category>
+		<title>Talentanstieg</title>
+		<content><![CDATA[Ah, seht nur ...! Ihr habt Euer - nun: Verständnis - im Talent "Bei Nacht und Nebel" ein wenig steigern können. Weiter so, dann werdet Ihr bald mehr Münzen in Euren Beutel wandern sehen...]]></content>
+	</text>
+	
+	<text>
+		<id>3</id>
+		<category></category>
+		<title></title>
+		<content><![CDATA[Der kaiserliche Herold verkündet:<br />"In unserer unendlichen Gnade haben wir entschieden und verfügt, daß Ihr, @p, von non an den folgenden Titel tragen dürft:<br />"Edelmann"<br />Der Kaiser]]></content>
+	</text>
+</texts>
