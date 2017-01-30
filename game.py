@@ -4,6 +4,10 @@
 import pygame
 import person
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 
 S_INIT = 0
 

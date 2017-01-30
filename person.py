@@ -3,6 +3,10 @@
 
 import random
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 GENDER_MALE = 0
 GENDER_FEMALE = 1
 

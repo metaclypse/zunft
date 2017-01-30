@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
-class RecourceManager:
+
+class ResourceManager:
     instance = None
 
     def __init__(self):
@@ -10,7 +14,7 @@ class RecourceManager:
 
     @staticmethod
     def get_instance():
-        if RecourceManager.instance is None:
-            RecourceManager.instance = RecourceManager()
+        if ResourceManager.instance is None:
+            ResourceManager.instance = ResourceManager()
 
-        return RecourceManager.instance
+        return ResourceManager.instance
