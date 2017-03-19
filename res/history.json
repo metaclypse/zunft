@@ -1,0 +1,29 @@
+{
+	"three_popes": 
+	{
+		"id" : 1,
+		"title" : "Andernorts im Heiligen Römischen Reich Deutscher Nation...",
+		"year" : 1409,
+		"date" : "26. Juni",
+		"city" : "all",
+		"content" : "Das Konzil von Pisa führt zu einer dreifachen Spaltung:\nDie Päpste Gregor XII. von Rom und Benedikt XIII. von Avingon erklärt man für abgesetzt und wählt Alexander V. zum neuen Papst. Doch anstatt daß dieses nun den Streit beilege und kläre, verweigern die Abgewählten und Ruprecht, König des Heiligen Römischen Reiches, die Anerkennung des Konzilergebnisses. Nun hat die Kirsche plötzlich drei Päpste!"
+	},
+	"": 
+	{
+		"id" : 2,
+		"title" : "Andernorts im Heiligen Römischen Reich Deutscher Nation...",
+		"year" : 1410,
+		"date" : "",
+		"city" : "all",
+		"content" : "König Ruprecht dankt ab, König Sigismund folgt ihm nach.\n\nDa haben die Kurfürsten aber einen gewählt: \"Immer in Geldnot aber selten um Ausflüchte verlegen\", dieser Ruf eilet ihm voraus. Er kennt aber die Tricks und Kniffe, um Menschen zu gewinnen - und wahrlich in nicht geringer Zahl auch die Frauen - aber auch die ehrenwerten Heren der Politik.\n\nJohannes XXIII. verhängt den Kirchenbann über Johannes Hus. Dieser lehrt an der Prager Universität und prangert die Mißstände in der kirche an, insbesondere das Schisma und die Unmoral der Geistlichen bis hinauf zu den Päpsten selbst."
+	},
+	"": 
+	{
+		"id" : 3,
+		"title" :"",
+		"year" : 1404,
+		"date" : "14. November",
+		"city" : "cologne",
+		"content" : "Der Rat beschließt: Die Rentmeister dürfen von nun an nur noch mit Wissen des Rates und bei ausreichender Bürgschaft aus der städtischen Schatulle Gelder verleihen."
+	}
+}

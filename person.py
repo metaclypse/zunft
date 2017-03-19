@@ -185,7 +185,7 @@ class Talents:
         self.fighting = f
         self.trading = t
         self.craft = c
-        self.rhetorics = r
+        self.rhetoric = r
 
 
 class Wealth:

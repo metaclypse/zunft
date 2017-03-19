@@ -1,12 +1,1 @@
-Allensteyn
-Napfel
-Lunz
-Goldberg
-Bromberg
-Berger
-Gürtelmacher
-Dankenburg
-Wichtigmann
-Ermler
-Tupfer
-Holldur
+"last_names" = ["Allensteyn", "Napfel", "Lunz", "Goldberg", "Bromberg", "Berger", "Gürtelmacher", "Dankenburg", "Wichtigmann", "Ermler", "Tupfer", "Holldur", "Hullinger", "Raubinger"]
