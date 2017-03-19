@@ -46,6 +46,7 @@ class Game:
         # render sprites
         # self.all_sprites.clear(self.window)
         self.all_sprites.draw(self.window)
+
         pygame.display.flip()
 
         # render cursor
@@ -64,8 +65,11 @@ class Game:
 
         def tst():
             print("BUUUUHHH")
-        test_btn = menu.Button((200, 200), tst, "BUUUUHHH")
+        test_btn = menu.Button((200, 200), tst, "Ey du Mungo!!")
         test_btn.add(self.all_sprites)
+
+        text_btn2 = menu.Button((200, 250), tst, "Wasn ey, komm doch her!")
+        text_btn2.add(self.all_sprites)
 
         while self.running:
             for event in pygame.event.get():

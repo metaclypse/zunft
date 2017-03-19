@@ -3,6 +3,7 @@ import pygame
 
 RLEACCEL = 16384
 
+
 def load_image(filename, colorkey=None):
     fullname = os.path.join("res", "img", filename)
 
