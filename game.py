@@ -5,17 +5,19 @@ import pygame
 from pygame.locals import *
 import sys
 
-import person
 import menu
+import match
 
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+S_NONE = -1
 S_INIT = 0
 S_MENU = 1
 S_SETUP = 2
 S_MATCH = 3
 S_TRANSITION = 4
+S_MAIN_MENU = 5
 
 TARGET_FPS = 30
 
@@ -33,11 +35,78 @@ class Game:
         self.fps_clock = None
         self.mouse_x, self.mouse_y = 0, 0
         self.click_down = False
-
         self.cursor = pygame.image.load("res/img/cursor.png")
 
+        self.next_state = S_NONE
+
+        self.main_menu = None
+        self.match = None
+
+    def schedule_state_change(self, state):
+        self.next_state = state
+
+    def start_game_setup(self):
+        self.schedule_state_change(S_SETUP)
+
+    def clear_sprites(self):
+        self.all_sprites = pygame.sprite.Group()
+
+    def setup_match(self):
+        print("Setting up new match...")
+        self.clear_sprites()
+
+        self.match = match.Match(self)
+        self.match.setup()
+
+    def handle_events(self):
+        handled_events = 0
+
+        for event in pygame.event.get():
+            # print("handling event #" + str(handled_events) + "(" + str(event) + ")")
+
+            if event.type == QUIT:
+                self.running = False
+            elif event.type == MOUSEMOTION:
+                self.mouse_x, self.mouse_y = event.pos
+            elif event.type == MOUSEBUTTONUP:
+                self.mouse_x, self.mouse_y = event.pos
+                for s in self.all_sprites:
+                    if s.rect.collidepoint((self.mouse_x, self.mouse_y)) and isinstance(s, menu.Button):
+                        s.call_function()
+
+            elif event.type == MOUSEBUTTONDOWN:
+                self.mouse_x, self.mouse_y = event.pos
+                self.click_down = True
+            elif event.type == KEYDOWN:
+                if event.key == K_a:
+                    print("A was pressed")
+            elif event.type == KEYUP:
+                if event.key == K_ESCAPE:
+                    pygame.event.post(pygame.event.Event(QUIT))
+
+            handled_events += 1
+
     def update(self):
+        self.handle_events()
+
         self.all_sprites.update()
+        s = self.state
+        if s == S_INIT:
+            pass
+        if s == S_MAIN_MENU:
+            if self.main_menu is None:
+                self.main_menu = menu.MainMenu(self, (200, 100))
+
+        elif s == S_MATCH:
+            if self.match is None:
+                self.setup_match()
+            else:
+                self.match.update()
+
+        if self.next_state != S_NONE:
+            print("Changing to scheduled state " + str(self.next_state))
+            self.state = self.next_state
+            self.next_state = S_NONE
 
     def render(self):
         # clear screen
@@ -58,42 +127,15 @@ class Game:
         pygame.init()
         pygame.mouse.set_visible(False)
         self.fps_clock = pygame.time.Clock()
-        self.window = pygame.display.set_mode((800, 600))
+        self.window = pygame.display.set_mode((1024, 600))
         pygame.display.set_caption(self.title)
 
         self.running = True
 
-        def tst():
-            print("BUUUUHHH")
-        test_btn = menu.Button((200, 200), tst, "Ey du Mungo!!")
-        test_btn.add(self.all_sprites)
-
-        text_btn2 = menu.Button((200, 250), tst, "Wasn ey, komm doch her!")
-        text_btn2.add(self.all_sprites)
+        self.state = S_MAIN_MENU
 
         while self.running:
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    self.running = False
-                elif event.type == MOUSEMOTION:
-                    self.mouse_x, self.mouse_y = event.pos
-                elif event.type == MOUSEBUTTONUP:
-                    self.mouse_x, self.mouse_y = event.pos
-                    print("click")
-                    for s in self.all_sprites:
-                         if s.rect.collidepoint((self.mouse_x, self.mouse_y)) and isinstance(s, menu.Button):
-                             s.call_function()
-
-                elif event.type == MOUSEBUTTONDOWN:
-                    self.mouse_x, self.mouse_y = event.pos
-                    self.click_down = True
-                elif event.type == KEYDOWN:
-                    if event.key == K_a:
-                        print("A was pressed")
-                elif event.type == KEYUP:
-                    if event.key == K_ESCAPE:
-                        pygame.event.post(pygame.event.Event(QUIT))
-
+            self.update()
             self.render()
 
             pygame.display.update()
@@ -106,6 +148,7 @@ class Game:
 
     def transition_states(self, old, new):
         self.state = new
+
 
 if __name__ == "__main__":
     g = Game()

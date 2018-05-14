@@ -1,0 +1,10 @@
+.idea
+.project
+.settings
+.jshintrc
+.npmignore
+*.pyc
+*.py~
+.gitignore~
+saves
+*~
