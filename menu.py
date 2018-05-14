@@ -1,8 +1,9 @@
 import pygame
 import sys
 from game_utils import load_image
+import game
 import datetime
-
+import logging
 
 class ButtonListener(object):
     def __init__(self):
@@ -82,20 +83,25 @@ class Button(pygame.sprite.Sprite):
         print("(" + str(datetime.datetime.now()) +") Clicked button with text: \"" + self.text + "\"")
 
 
-class NewGameButton(Button):
+class NewMatchButton(Button):
     def button_function(self):
-        print("STARTING A NEW GAME BITCHES!!!")
         self.game.start_game_setup()
+
+
+class EndGameButton(Button):
+    def button_function(self):
+        logging.debug("main menu: ending game")
+        self.game.schedule_state_change(game.S_QUIT)
 
 
 class MainMenu:
     def __init__(self, game, offset=(0, 0)):
         self.game = game
 
-        self.button_new_game = NewGameButton(game, (0 + offset[0], 0 + offset[1]), self.new_game, "Neues Spiel", 15)
+        self.button_new_game = NewMatchButton(game, (0 + offset[0], 0 + offset[1]), self.new_game, "Neues Spiel", 15)
         self.button_load_game = Button(game, (0 + offset[0], 50 + offset[1]), self.load_game, "Spiel laden", 15)
         self.button_settings = Button(game, (0 + offset[0], 100 + offset[1]), self.settings, "Einstellungen", 15)
-        self.button_quit = Button(game, (0 + offset[0], 150 + offset[1]), self.quit, "Spiel beenden", 15)
+        self.button_quit = EndGameButton(game, (0 + offset[0], 150 + offset[1]), self.quit, "Spiel beenden", 15)
 
         self.game.all_sprites.add(self.button_new_game, self.button_load_game, self.button_settings, self.button_quit)
 

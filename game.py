@@ -7,6 +7,7 @@ import sys
 
 import menu
 import match
+import logging
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -18,6 +19,7 @@ S_SETUP = 2
 S_MATCH = 3
 S_TRANSITION = 4
 S_MAIN_MENU = 5
+S_QUIT = 6
 
 TARGET_FPS = 30
 
@@ -48,15 +50,22 @@ class Game:
     def start_game_setup(self):
         self.schedule_state_change(S_SETUP)
 
+    def change_state(self):
+        logging.debug("Changing to scheduled state " + str(self.next_state))
+        self.state = self.next_state
+        self.next_state = S_NONE
+
     def clear_sprites(self):
         self.all_sprites = pygame.sprite.Group()
 
     def setup_match(self):
-        print("Setting up new match...")
+        logging.debug("Setting up new match...")
         self.clear_sprites()
 
         self.match = match.Match(self)
         self.match.setup()
+
+        self.schedule_state_change(S_MATCH)
 
     def handle_events(self):
         handled_events = 0
@@ -79,7 +88,7 @@ class Game:
                 self.click_down = True
             elif event.type == KEYDOWN:
                 if event.key == K_a:
-                    print("A was pressed")
+                    logging.debug("A was pressed")
             elif event.type == KEYUP:
                 if event.key == K_ESCAPE:
                     pygame.event.post(pygame.event.Event(QUIT))
@@ -103,10 +112,14 @@ class Game:
             else:
                 self.match.update()
 
+        elif s == S_SETUP:
+            self.setup_match()
+
+        elif s == S_QUIT:
+            self.running = False
+
         if self.next_state != S_NONE:
-            print("Changing to scheduled state " + str(self.next_state))
-            self.state = self.next_state
-            self.next_state = S_NONE
+            self.change_state()
 
     def render(self):
         # clear screen
@@ -122,7 +135,7 @@ class Game:
         self.window.blit(self.cursor, (self.mouse_x, self.mouse_y))
 
     def run(self):
-        print("starting")
+        logging.debug("starting the program")
 
         pygame.init()
         pygame.mouse.set_visible(False)
@@ -141,7 +154,7 @@ class Game:
             pygame.display.update()
             self.fps_clock.tick(TARGET_FPS)
 
-        print("stopping")
+        logging.debug("stopping")
         pygame.mouse.set_visible(True)
         pygame.quit()
         sys.exit()
@@ -151,5 +164,6 @@ class Game:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
     g = Game()
     g.run()

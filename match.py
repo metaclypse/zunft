@@ -5,6 +5,7 @@ from person import Person
 from random import randint
 
 import datetime
+import logging
 
 import sys
 reload(sys)
@@ -28,7 +29,9 @@ class Match:
         self.player_event_times = []
         self.history_event_times = []
 
-        self.second_counter = 0
+        self.tick_counter = 0
+
+        self.total_ticks = 0
 
         for i in range(0, 5):
             self.persons.append(Person.random_person(i))
@@ -49,6 +52,9 @@ class Match:
         pass
 
     def tick(self):
+        self.total_ticks += 1
+        logging.debug("tick() #" + str(self.total_ticks) + "")
+
         # update buildings
         # calculate player_event probability
         # call player_event
@@ -65,6 +71,7 @@ class Match:
         # update persons
         # * their relationships
         # * their assets
+
         pass
 
     def next_day(self):
@@ -81,17 +88,8 @@ class Match:
             self.history_event_times.append(randint(0, MATCH_LENGTH_SECONDS))
 
     def update(self):
-        if self.second_counter >= TICK_TIME:
+        if self.tick_counter >= TICK_TIME:
             self.tick()
-            self.second_counter = 0
+            self.tick_counter = 0
         else:
-            self.second_counter += 1
-
-
-if __name__ == "__main__":
-    print("__Test__")
-    m = Match()
-    m.next_day()
-
-
-
+            self.tick_counter += 1
