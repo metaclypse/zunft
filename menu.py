@@ -22,7 +22,7 @@ class Button(pygame.sprite.Sprite):
 
         # Create text
         self.text = text
-        button_font = pygame.font.SysFont("monospace", 18, bold=True)
+        button_font = pygame.font.SysFont("Alex_Elegant", 18, bold=True)
         label = button_font.render(text, 1, (255, 255, 255))
         text_width, text_height = button_font.size(text)
 

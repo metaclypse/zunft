@@ -1,5 +1,6 @@
 import os
 import pygame
+from random import randint
 
 RLEACCEL = 16384
 
@@ -22,3 +23,6 @@ def load_image(filename):  # , colorkey=None):
     #     image.set_colorkey(colorkey, RLEACCEL)
 
     return image, image.get_rect()
+
+def probability(pr=50):
+    return (randint(0, 100) < pr);

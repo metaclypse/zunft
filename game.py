@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 import pygame
 from pygame.locals import *
 import sys
@@ -9,8 +11,8 @@ import menu
 import match
 import logging
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 
 S_NONE = -1
 S_INIT = 0
@@ -63,7 +65,6 @@ class Game:
         self.clear_sprites()
 
         self.match = match.Match(self)
-        self.match.setup()
 
         self.schedule_state_change(S_MATCH)
 

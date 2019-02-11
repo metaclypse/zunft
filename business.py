@@ -11,7 +11,7 @@ BUSINESS_TYPES = {
 }
 
 
-class Business:
+class Business(object):
     def __init__(self):
         self.title = ""
         self.type = 0
