@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import random
+import json
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-import json
+
+NONE = -1
 
 GENDER_MALE = 0
 GENDER_FEMALE = 1
@@ -23,20 +25,21 @@ PROF_HOST = 8
 PROF_ROBBER = 9
 PROF_MERCHANT = 10
 
-RELIGION_KATHOLISCH = 0
-RELIGION_KATHARISCH = 1
+RELIGION_CATHOLIC = 0
+RELIGION_CATHARIC = 1
 
 MAX_STAT = 24  # 4x4 pts = 4 stars are maximum, 4 pts are worth one star, for every improvement the caracter gains 1 pt
 MAX_RANK = 5
 MAX_WEALTH = 1000000
 MAX_AP = 20
 MAX_STANDING = 4
+MAX_SYMPATHY = 100
 
 DEFAULT_MONEY = 1000  # 1000 moneys as starting capital
 
 SKIN_PATHS = ["", "", ""]
 CREST_PATHS = ["", "", ""]
-FUNCTIONS = ["", "", ""]
+OFFICIAL_FUNCTIONS = ["", "", ""]
 
 GENDER_STRINGS = {
     GENDER_MALE: "Mann",
@@ -44,25 +47,25 @@ GENDER_STRINGS = {
 }
 
 PROFESSION_STRINGS = {
-    PROF_BLACKSMITH: "Schmied",
-    PROF_ALCHEMIST: "Trankmischer",
-    PROF_PERFUMER: "Duftmischer",
-    PROF_PRIEST: "Prediger"
+    PROF_BLACKSMITH: 'Schmied',
+    PROF_ALCHEMIST: 'Trankmischer',
+    PROF_PERFUMER: 'Duftmischer',
+    PROF_PRIEST: 'Prediger'
 }
 
 
 STANDING_STRINGS = {
-    0: "Herr",
-    1: "Bürger",
-    2: "Patrizier",
-    3: "Edelmann",
-    4: "Graf"
+    0: 'Herr',
+    1: 'Bürger',
+    2: 'Patrizier',
+    3: 'Edelmann',
+    4: 'Graf'
 }
 
 
 class Person(object):
     def __init__(self, pid, first_name, last_name, father, mother, gender, religion, skin, talents, fortune, profession,
-                 crest=None, rank=0, standing=0, function=0, ap=0, spouse=-1):
+                 crest=NONE, rank=0, standing=0, official_function=NONE, ap=0, spouse=NONE):
         self.id = pid
         self.first_name = first_name
         self.last_name = last_name
@@ -75,12 +78,13 @@ class Person(object):
         self.crest = crest
         self.talents = talents
         self.standing = standing
-        self.function = function
+        self.official_function = official_function
         self.profession = profession
         self.rank = rank
         self.ap = ap
         self.fortune = fortune
         self.sympathy = []
+        self.spouse = spouse
 
     @staticmethod
     def from_save(pid):
@@ -92,10 +96,10 @@ class Person(object):
         rnd_last_name = Person.get_random_last_name()
         rnd_first_name = Person.get_random_name(rnd_gender)
 
-        rnd_father = -1
-        rnd_mother = -1
+        rnd_father = NONE
+        rnd_mother = NONE
 
-        rnd_religion = random.randint(RELIGION_KATHOLISCH, RELIGION_KATHARISCH)
+        rnd_religion = random.randint(RELIGION_CATHOLIC, RELIGION_CATHARIC)
 
         rnd_skin = random.randint(0, len(SKIN_PATHS) - 1)
         rnd_crest = random.randint(0, len(CREST_PATHS) - 1)
@@ -107,7 +111,7 @@ class Person(object):
                               random.randint(1, MAX_STAT))
         rnd_standing = random.randint(0, MAX_STANDING)
         rnd_function = 0
-        rnd_profession = random.randint(0, len(FUNCTIONS))
+        rnd_profession = random.randint(0, len(OFFICIAL_FUNCTIONS))
         rnd_rank = random.randint(0, MAX_RANK)
         rnd_ap = random.randint(0, MAX_AP)
         rnd_fortune = Wealth(random.randint(0, MAX_WEALTH),
@@ -135,9 +139,9 @@ class Person(object):
     @staticmethod
     def get_random_name(gender):
         if gender == GENDER_MALE:
-            name_file = "./res/male_names.txt"
-        elif gender == GENDER_FEMALE:
-            name_file = "./res/female_names.txt"
+            name_file = './res/male_names.txt'
+        else:
+            name_file = './res/female_names.txt'
 
         with open(name_file) as f:
             lines = f.read().splitlines()
@@ -173,11 +177,21 @@ class Person(object):
         self.sympathy[pid] = val
 
     def to_string(self):
-        txt = "ID: " + str(self.id) + \
-              "\nName: " + self.first_name + " " + self.last_name + \
-              "\nGender: " + str(self.gender) + \
-              "\nAP: " + str(self.ap) +  \
-              "\nProfession: " + PROFESSION_STRINGS[self.profession]
+        txt = 'ID: ' + str(self.id) + \
+              '\nName: ' + self.first_name + ' ' + self.last_name + \
+              '\nGender: ' + str(self.gender) + \
+              '\nAP: ' + str(self.ap) +  \
+              '\nProfession: ' + PROFESSION_STRINGS[self.profession]
+
+        return txt
+
+    # for future
+    def to_unicode(self):
+        txt = u'ID: ' + unicode(self.id) + \
+              u'\nName: ' + unicode(self.first_name) + u' ' + unicode(self.last_name) + \
+              u'\nGender: ' + unicode(self.gender) + \
+              u'\nAP: ' + unicode(self.ap) +  \
+              u'\nProfession: ' + unicode(PROFESSION_STRINGS[self.profession])
 
         return txt
 
@@ -214,6 +228,7 @@ class Wealth:
         self.c2 = c2
         self.c3 = c3
         self.c4 = c4
+
 
 if __name__ == "__main__":
     print("__Test__")

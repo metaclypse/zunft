@@ -1,0 +1,113 @@
+Die Zunft
+#########
+
+'Die Zunft' is a life simulation game that plays in the late middle age, when cities became powerful and even wealthy
+peasants were able to secure power and a good life for themselves. The game is a clone of the masterpiece 'Die Gilde'
+that was developed by JoWood Entertainment. (Note: It is not a clone of the Gold version of the game, but the original
+version 1.0.)
+
+The player assumes the role of a master craftsman who just opened his/her shop in the city.
+
+The game is being played in rounds, whereas each round represents a day and also a season. The player starts in spring.
+After 10 minutes nights falls and the player goes to bed, which marks the end of the round. The next day it is summer
+and so on. During each round the player has to try his best to acquire wealth, extend his business and to gain friends
+and influence in the city. Depending on their profession, there are different ways to pursue this goal. The following
+section gives an overview of the available professions.
+
+
+Professions
+###########
+There are 11 possible professions, however, only 9 are available at the beginning of a match. The last 2 (robber and
+merchant) can only be switched to mid-game. The following list shows, what each profession does:
+
+Blacksmith: The blacksmith is a craftsman and creates metal objects, which he sells.
+Alchemist: The alchemist creates potions with various effects, that can help the player in-game or be sold.
+Perfumer: The perfumer creates perfumes and concoctions that he sells. The difference to the alchemist is that
+the effects of perfumes are more centered around humans and their relationships.
+Priest: The priest takes care of the local church and collects money from the peasants. However, he can also write and
+sell scriptures.
+Guard: The guard is in charge of upholding order in the city. He can patrol the streets and perform raids on suspects,
+where he keeps a share of the confiscated loot.
+Thief: Thieves earn money by robbing buildings and pickpocketing.
+Mason: The mason is a craftsman that creates and sells stone objects.
+Carpenter: Another craftsman, the carpenter creates items made of wood.
+Host: The host leads an inn, where he brews alcohol, cooks meals and supplies space for gambling.
+Robber: The player can only change to robber mid-game. Robbers reside in old ruined castles and rob the transport
+carts that roam the city.
+Merchant: The player can only change to merchant mid-game. Merchants loan money and trade rare foreign goods.
+
+
+Starting Conditions
+###################
+At the beginning of the game the player chooses one of these professions. Once the game starts he/she then starts
+with the following means:
+* 1 shop where he/she performs his craft; the kind of the shop depends on the chosen profession
+* 1 employee in the shop
+* fixed amount of money as starting capital, the currency depends on the city
+* 1 house where the player resides
+* a certain amount of materials in the shop's stock which can be used to craft a few initial items
+
+
+Crafting Items
+##############
+Item creation is performed by employees. See the respective section for more details.
+
+
+Buying and Selling
+##################
+There are 2 ways of buying and selling items: On the central marketplace of the city or in the respective shop.
+The player starts by producing some items. To sell them, he can simply leave them in his shop's stockpile. Here and
+there, other characters of the city automatically come and buy one or two items from the stock. However, this is not
+predictable and provides no steady income, therefore the player must also sell goods on the marketplace.
+Every city has a central marketplace where each item can be sold or bought. For this purpose, the items have to be
+transported from the shop to the marketplace, which is done by a transport cart.
+
+
+Prices
+######
+Prices for goods are varying, they change all the time throughout the game. Even during one round/day the prices
+fluctuate, so the player must observe the local market and sell and buy goods at the best possible time.
+
+
+Carts
+#####
+Each business uses transport carts to transport items to and from the marketplace or other shops. There are three types
+of carts:
+* small cart: operated by a driver, only has 1 item slot, slow, cheap (500)
+* big cart: operated by a driver, has 2 item slots, slightly faster, moderate price (1000)
+* horse cart: operated by a driver and a horse, has 3 item slots, fastest, expensive (1500)
+
+
+Buildings
+#########
+Buildings are necessary for persons to live in and to perform their professions. There are also city-owned buildings
+that serve no direct purpose for the player or other persons.
+As building types/levels become available, they can also be built directly, without building cheaper buildings first
+and then upgrading.
+
+
+Houses
+######
+Houses are the buildings in which players and other persons reside. They can be improved with various extensions and
+additional rooms. Houses can also be upgraded. Upgrades are available according to a person's standing in the city.
+The player starts with the lowest standing and thus the cheapest possible house. Differences between the types of
+houses are: size, price, available extensions and rooms.
+Each house starts with an office, where other rooms can be added.
+
+The house types are as follows:
+1) House: 1 room possible
+2) Citizen House: 2 rooms possible
+3) Mansion
+4) Palazzo
+
+
+Shops
+#####
+Shops, in general, are buildings where the persons perform their business.
+
+
+Employees
+#########
+The player does not create items or perform duties himself. Instead, he/she has employees that are used to perform work
+like forging, cooking, crafting and so on. Depending on the size of the business, the player can employ a certain
+amount of people. They usually start as apprentices and can be promoted to bachelor.

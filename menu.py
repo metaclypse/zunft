@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import pygame
 import sys
 from game_utils import load_image
@@ -14,17 +17,17 @@ class ButtonListener(object):
 
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, game, start_pos, function, text, minimum_size=-1):
+    def __init__(self, game_instance, start_pos, function, text, minimum_size=-1):
         pygame.sprite.Sprite.__init__(self)
 
-        self.game = game
+        self.game = game_instance
         self.listeners = []
 
         # Create text
         self.text = text
-        button_font = pygame.font.SysFont("Alex_Elegant", 18, bold=True)
-        label = button_font.render(text, 1, (255, 255, 255))
-        text_width, text_height = button_font.size(text)
+        #button_font = pygame.font.SysFont("Alex_Elegant", 18, bold=True)
+        label = game_instance.main_font.render(text, 1, (255, 255, 255))
+        text_width, text_height = game_instance.main_font.size(text)
 
         # Set up images & arrange
         left_image, lr = load_image("btn_corner.png")

@@ -3,10 +3,15 @@
 
 from __future__ import unicode_literals
 
+# python packages import
 import pygame
 from pygame.locals import *
+
+import OpenGL
+
 import sys
 
+# project imports
 import menu
 import match
 import logging
@@ -42,7 +47,7 @@ class Game:
         self.cursor = pygame.image.load("res/img/cursor.png")
 
         self.next_state = S_NONE
-
+        self.main_font = None
         self.main_menu = None
         self.match = None
 
@@ -141,8 +146,11 @@ class Game:
         pygame.init()
         pygame.mouse.set_visible(False)
         self.fps_clock = pygame.time.Clock()
-        self.window = pygame.display.set_mode((1024, 600))
+        self.window = pygame.display.set_mode((1400, 900), pygame.RESIZABLE|pygame.DOUBLEBUF)
+        self.window
         pygame.display.set_caption(self.title)
+
+        self.main_font = pygame.font.Font('CATZentenaerFrakturUNZ1.ttf', 18)
 
         self.running = True
 
